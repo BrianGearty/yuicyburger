@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center" id="header">
+            <img src="/assets/image/burger.png" width="15%" alt="Yuicy burger">
+            <h1> Yuicy Burgers </h1>
+        </div>
+        <div class="col-md-6 text-center" class="input">
+            <div class="row">
+                {{#each burger_data}}
+                {{#unless this.devoured}}
+                <div class="col-md-9 text-center">
+                    <pre>{{this.id}}. {{this.burger_name}}
+					</pre>
+
+                </div>
+                <div class="col-md-3 text-center">
+                    <form class="inhaled button-size">
+                        <input type="hidden" class="burger_id" type="text" value={{this.id}}><br>
+                        <button type="submit" class="btn btn-danger">Inhale it!</button>
+                    </form>
+                </div>
+                {{/unless}}
+                {{/each}}
+            </div>
+        </div>
+        <div class="col-md-6 text-center" class="input">
+            {{#each burger_data}}
+            {{#if this.devoured}}
+            <input class="form-control eaten" type="text" placeholder="{{this.id}} . {{this.burger_name}}" readonly>
+            {{/if}}
+            {{/each}}
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center userInput">
+            <form action="/burgers/create" method="POST">
+            <p>Input the burger you want and hit "Cook it!"</p>
+                <input type="text" class="form-control" name="burger_name" value="" id="userInputArea">
+                <button type="submit" class="btn btn-danger" id="userInputButton">Cook it!</button>
+            </form>
+            
+        </div>
+    </div>
+</div>
